@@ -1,0 +1,16 @@
+{
+  "title": "Frame Demolition",
+  "name": "frame-demolition",
+  "version": "0.0.0",
+  "description": "Enabling route to load abstracted file layer in select sites.",
+  "main": "index.js",
+  "author": "Skyvory",
+  "engines": {
+    "firefox": ">=38.0a1",
+    "fennec": ">=38.0a1"
+  },
+  "license": "MIT",
+  "keywords": [
+    "jetpack"
+  ]
+}
