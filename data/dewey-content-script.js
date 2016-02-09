@@ -17,6 +17,20 @@ var download_element = '\
 		// <button class="fd-download-button" id="fddownload">Download all</button>\
 $(download_element).appendTo(".detailright");
 
+var jumpto_element = '\
+	<button class="fd-jump-to-download-button waves-effect waves-light btn teal lighten-3" id="fdjumptodownload">to download</button>\
+';
+$(jumpto_element).appendTo('.detailleft');
+
+document.getElementById("fdjumptodownload").addEventListener("click", function() {
+	var container = $('html,body');
+	var scrollto = $('.fd-download-button');
+	container.animate({
+		scrollTop: scrollto.offset().top - container.offset().top - 300,
+		srollLeft: 0
+	}, 300);
+});
+
 
 // $(".frame-demolition").on('click', '.fd-download', function() {
 // 	console.log("processing");
