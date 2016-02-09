@@ -8,7 +8,7 @@
 var download_element = '\
 	<div class="frame-demolition">\
 		<button class="fd-download-button waves-effect waves-light btn pink lighten-3" id="fddownload"><i class="material-icons left"></i>Download All</button>\
-		<span class="fd-download-status">notice: your browser will stop respondingfor a minute when downloading</span>\
+		<span class="fd-download-status">notice: your browser will stop responding for up to a minute when downloading</span>\
 		<div class="fd-download-loading-bar progress" style="display:none;">\
 			<div class="indeterminate"></div>\
 		</div>\
@@ -58,6 +58,8 @@ target_element.addEventListener("click", function() {
 
 // collecting and parsing pdf links
 var section_list = $('.detailright ol li'), individual_section, section_link, links = [];
+var extension_regex = /(?:\.([^.]+))?$/;
+
 for(var i = 0; i < section_list.length; i++) {
 	// get item list according order
 	individual_section = $('.detailright ol li a:eq(' + i + ')');
@@ -65,14 +67,27 @@ for(var i = 0; i < section_list.length; i++) {
 	section_link = individual_section[0].getAttribute("href");
 	// console.log(section_link);
 	// replace unnecessary string from the link
-	section_link = section_link.replace("ft_viewer.php?fname=", "");
-	// concat path to direct pdf file
-	section_link = "http://dewey.petra.ac.id/repository/jiunkpe/" + section_link;
-	// append parsed link to array
-	links.push(section_link);
+	var extension = extension_regex.exec(section_link)[1];
+	console.log(extension);
+	if(extension == "pdf") {
+		section_link = section_link.replace("ft_viewer.php?fname=", "");
+		// concat path to direct pdf file
+		section_link = "http://dewey.petra.ac.id/repository/jiunkpe/" + section_link;
+	}
+	else if(extension == "jpg") {
+		section_link = section_link;
+	}
+	else {
+		section_link = null;
+	}
+	if(section_link) {
+		// append parsed link to array
+		links.push(section_link);
+	}
 }
 
 // var fileUrls = ['http://www.w3schools.com/images/w3schools.png', 'http://dewey.petra.ac.id/repository/jiunkpe/jiunkpe/s1/info/2010/jiunkpe-ns-s1-2010-26407079-19762-cosine-conclusion.pdf', 'http://dewey.petra.ac.id/repository/jiunkpe/jiunkpe/s1/info/2010/jiunkpe-ns-s1-2010-26407079-19762-cosine-chapter1.pdf'];
+// var fileUrls = ['http://dewey.petra.ac.id/repository/jiunkpe/jiunkpe/s1/jdkv/2009/jiunkpe-ns-s1-2009-42405108-14162-jasa-extras1.jpg'];
 var fileUrls = links;
 var zip = new JSZip();
 var count = 0;
