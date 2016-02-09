@@ -5,7 +5,11 @@
 // 	console.log("XXX");
 // });
 
-var download_element = '<div class="frame-demolition"><button class="fd-download-button" id="fddownload">Download all</button></div>';
+var download_element = '\
+	<div class="frame-demolition">\
+		<button class="fd-download-button" id="fddownload">Download all</button>\
+	</div>\
+';
 $(download_element).appendTo(".detailright");
 
 
