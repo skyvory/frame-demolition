@@ -49,13 +49,19 @@ target_element.addEventListener("click", function() {
 // http://dewey.petra.ac.id/repository/jiunkpe/jiunkpe/s1/info/2010/jiunkpe-ns-s1-2010-26407079-19762-cosine-chapter1.pdf
 
 
+// collecting and parsing pdf links
 var section_list = $('.detailright ol li'), individual_section, section_link, links = [];
 for(var i = 0; i < section_list.length; i++) {
+	// get item list according order
 	individual_section = $('.detailright ol li a:eq(' + i + ')');
+	// get link value of href
 	section_link = individual_section[0].getAttribute("href");
 	// console.log(section_link);
+	// replace unnecessary string from the link
 	section_link = section_link.replace("ft_viewer.php?fname=", "");
+	// concat path to direct pdf file
 	section_link = "http://dewey.petra.ac.id/repository/jiunkpe/" + section_link;
+	// append parsed link to array
 	links.push(section_link);
 }
 
@@ -124,9 +130,10 @@ function onDownloadComplete(blobData) {
 	if(count < fileUrls.length) {
 		console.log("Count OK");
 		blobToBase64(blobData, function(binaryData) {
-			// add file to zip
+			// determine name of the file to be added
 			var fileName = fileUrls[count].substring(fileUrls[count].lastIndexOf('/') + 1);
 			console.log("FILENAME", fileName);
+			// add file to zip (append)
 			zip.file(fileName, binaryData, {binary: true});
 			// zip.file(fileName, binaryData);
 			if(count < fileUrls.length - 1) {
@@ -137,13 +144,14 @@ function onDownloadComplete(blobData) {
 				// all files finished download
 				// ready to zip
 				console.log("ready to zip");
-
+				// genereate the zip of appended files and put in inside a variable
 				var content = zip.generate();
 
 				var zipName = "download.zip";
 				console.log("content after generate", content);
 				// location.href = "data:application/zip;base64," + content;
 
+				// simulate download action towards generated zip of which instance temporarily attached to document
 				var link = document.createElement('a');
 				link.download = zipName;
 				link.href = "data:application/zip;base64," + content;
