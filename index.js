@@ -13,7 +13,8 @@ var button = buttons.ActionButton({
 });
 
 function handleClick(state) {
-	tabs.open("http://dewey.petra.ac.id/catalog/ft_detail.php?knokat=19762");
+	// tabs.open("http://dewey.petra.ac.id/catalog/ft_detail.php?knokat=19762");
+	tabs.open("http://dewey.petra.ac.id/catalog/ft_detail.php?knokat=14162");
 	// console.log(tabs.activeTab.url);
 
 }
@@ -36,7 +37,7 @@ var self = require('sdk/self');
 var data = require('sdk/self').data;
 
 pageMod.PageMod({
-	include: "http://dewey.petra.ac.id/catalog/*",
+	include: "http://dewey.petra.ac.id/catalog/ft_detail.php*",
 	contentScriptFile: [data.url("jquery-1.12.0.min.js"), data.url("jszip.min.js"), data.url("jszip-utils.min.js"), "./dewey-content-script.js"],
 	contentStyleFile: [data.url("materialize/css/materialize.css"), "./dewey-style.css"],
 });
