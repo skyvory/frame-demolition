@@ -8,6 +8,10 @@
 var download_element = '\
 	<div class="frame-demolition">\
 		<button class="fd-download-button waves-effect waves-light btn pink lighten-3" id="fddownload"><i class="material-icons left"></i>Download All</button>\
+		<span class="fd-download-status">notice: your browser will stop respondingfor a minute when downloading</span>\
+		<div class="fd-download-loading-bar progress" style="display:none;">\
+			<div class="indeterminate"></div>\
+		</div>\
 	</div>\
 ';
 		// <button class="fd-download-button" id="fddownload">Download all</button>\
@@ -20,6 +24,9 @@ $(download_element).appendTo(".detailright");
 var target_element = document.getElementById("fddownload");
 target_element.addEventListener("click", function() {
 	console.log("OK");
+	// show loading bar
+	$('.fd-download-loading-bar').fadeIn();
+	// begin file downloading and processing
 	downloadFile(fileUrls[count], onDownloadComplete);
 });
 
@@ -74,6 +81,9 @@ var count = 0;
 
 function downloadFile(url, onSuccess) {
 	console.log("downloading file");
+	// change status
+	var downloading_file_name = fileUrls[count].substring(fileUrls[count].lastIndexOf('/') + 1);
+	$('.fd-download-status').text("downloading " + downloading_file_name + " ...");
 
 	// with native xhr
 	// var xhr = new XMLHttpRequest();
@@ -119,7 +129,7 @@ function downloadFile(url, onSuccess) {
 			console.log("ERROR", error);
 		}
 		else {
-			console.log("DATA", data);
+			// console.log("DATA", data);
 			onSuccess(data);
 		}
 	});
@@ -144,12 +154,19 @@ function onDownloadComplete(blobData) {
 				// all files finished download
 				// ready to zip
 				console.log("ready to zip");
+				// change downloding status
+				$('.fd-download-status').text("processing PDFs... please wait until browser is responding again (up to a minute)");
 				// genereate the zip of appended files and put in inside a variable
 				var content = zip.generate();
 
 				var zipName = "download.zip";
-				console.log("content after generate", content);
+				// console.log("content after generate", content);
 				// location.href = "data:application/zip;base64," + content;
+
+				// change downloading status
+				$('.fd-download-status').text("sweet!");
+				// hide downlod loading bar
+				$('.fd-download-loading-bar').fadeOut();
 
 				// simulate download action towards generated zip of which instance temporarily attached to document
 				var link = document.createElement('a');
