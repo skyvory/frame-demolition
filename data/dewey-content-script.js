@@ -7,9 +7,10 @@
 
 var download_element = '\
 	<div class="frame-demolition">\
-		<button class="fd-download-button" id="fddownload">Download all</button>\
+		<button class="fd-download-button waves-effect waves-light btn pink lighten-5" id="fddownload"><i class="material-icons left"></i>Download All</button>\
 	</div>\
 ';
+		// <button class="fd-download-button" id="fddownload">Download all</button>\
 $(download_element).appendTo(".detailright");
 
 
