@@ -8,6 +8,7 @@
 var download_element = '<div class="frame-demolition"><button class="fd-download-button" id="fddownload">Download all</button></div>';
 $(download_element).appendTo(".detailright");
 
+
 // $(".frame-demolition").on('click', '.fd-download', function() {
 // 	console.log("processing");
 // });
@@ -18,12 +19,43 @@ target_element.addEventListener("click", function() {
 });
 
 
-// dll link http://dewey.petra.ac.id/repository/jiunkpe/jiunkpe/s1/info/2010/jiunkpe-ns-s1-2010-26407079-19762-cosine-chapter1.pdf
+// debug button ---start---
+// var debug_element = '<div class="frame-demolition-debug"><button class="fd-debug-button" id="fddebug">Debug</button></div>';
+// $(debug_element).appendTo(".detailright");
 
+// var debug_target = document.getElementById("fddebug");
+// debug_target.addEventListener("click", function() {
+// 	console.log("DEBUG");
+// 	var section_list = $('.detailright ol li'), individual_section, section_link, links = [];
+// 	for(var i = 0; i < section_list.length; i++) {
+// 		individual_section = $('.detailright ol li a:eq(' + i + ')');
+// 		section_link = individual_section[0].getAttribute("href");
+// 		console.log(section_link);
+// 		section_link = section_link.replace("ft_viewer.php?fname=", "");
+// 		section_link = "http://dewey.petra.ac.id/repository/jiunkpe/" + section_link;
+// 		links.push(section_link);
+// 	}
+// 	console.log(links);
+// });
+// debug button ---end---
+
+// direct link example to dewey pdf
 // 'http://dewey.petra.ac.id/repository/jiunkpe/jiunkpe/s1/info/2010/jiunkpe-ns-s1-2010-26407079-19762-cosine-cover.pdf', 
+// http://dewey.petra.ac.id/repository/jiunkpe/jiunkpe/s1/info/2010/jiunkpe-ns-s1-2010-26407079-19762-cosine-chapter1.pdf
 
-// var fileUrls = ['http://www.w3schools.com/images/w3schools.png'];
-var fileUrls = ['http://dewey.petra.ac.id/repository/jiunkpe/jiunkpe/s1/info/2010/jiunkpe-ns-s1-2010-26407079-19762-cosine-conclusion.pdf'];
+
+var section_list = $('.detailright ol li'), individual_section, section_link, links = [];
+for(var i = 0; i < section_list.length; i++) {
+	individual_section = $('.detailright ol li a:eq(' + i + ')');
+	section_link = individual_section[0].getAttribute("href");
+	// console.log(section_link);
+	section_link = section_link.replace("ft_viewer.php?fname=", "");
+	section_link = "http://dewey.petra.ac.id/repository/jiunkpe/" + section_link;
+	links.push(section_link);
+}
+
+// var fileUrls = ['http://www.w3schools.com/images/w3schools.png', 'http://dewey.petra.ac.id/repository/jiunkpe/jiunkpe/s1/info/2010/jiunkpe-ns-s1-2010-26407079-19762-cosine-conclusion.pdf', 'http://dewey.petra.ac.id/repository/jiunkpe/jiunkpe/s1/info/2010/jiunkpe-ns-s1-2010-26407079-19762-cosine-chapter1.pdf'];
+var fileUrls = links;
 var zip = new JSZip();
 var count = 0;
 
@@ -31,28 +63,30 @@ var count = 0;
 
 function downloadFile(url, onSuccess) {
 	console.log("downloading file");
-	var xhr = new XMLHttpRequest();
-	// xhr.onprogress = calculateAndUpdateProgress();
-	xhr.open("GET", url, true);
-	// xhr.responseType = 'blob';
-	xhr.responseType = 'arrayBuffer';
-	xhr.onreadystatechange = function() {
-		console.log(xhr.readyState);
-		if(xhr.readyState == 4) {
-			if(onSuccess) {
-				console.log("XHR RESOPNSE", xhr.response);
-				// var blob = new Blob(xhr.response, {type: "application/pdf"});
-				onSuccess(xhr.response);
-				// onSuccess(blob);
-				// console.log("BLOB", blob);
-			}
-		}
-	}
-	// xhr.onload = function(event) {
-	// 	var blob = xhr.response;
-	// 	console.log(blob);
+
+	// with native xhr
+	// var xhr = new XMLHttpRequest();
+	// // xhr.onprogress = calculateAndUpdateProgress();
+	// xhr.open("GET", url, true);
+	// // xhr.responseType = 'blob';
+	// xhr.responseType = 'arrayBuffer';
+	// xhr.onreadystatechange = function() {
+	// 	console.log(xhr.readyState);
+	// 	if(xhr.readyState == 4) {
+	// 		if(onSuccess) {
+	// 			console.log("XHR RESOPNSE", xhr.response);
+	// 			// var blob = new Blob(xhr.response, {type: "application/pdf"});
+	// 			onSuccess(xhr.response);
+	// 			// onSuccess(blob);
+	// 			// console.log("BLOB", blob);
+	// 		}
+	// 	}
 	// }
-	xhr.send();
+	// // xhr.onload = function(event) {
+	// // 	var blob = xhr.response;
+	// // 	console.log(blob);
+	// // }
+	// xhr.send();
 
 	// with jquery
 	// var request = $.ajax({
@@ -66,6 +100,18 @@ function downloadFile(url, onSuccess) {
 	// 	console.log("JQUERY XHR RESPONSE", data);
 	// 	onSuccess(data);
 	// });
+
+
+	// with jszip-util
+	JSZipUtils.getBinaryContent(url, function(error, data) {
+		if(error) {
+			console.log("ERROR", error);
+		}
+		else {
+			console.log("DATA", data);
+			onSuccess(data);
+		}
+	});
 }
 
 function onDownloadComplete(blobData) {

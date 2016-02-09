@@ -37,7 +37,7 @@ var data = require('sdk/self').data;
 
 pageMod.PageMod({
 	include: "http://dewey.petra.ac.id/catalog/*",
-	contentScriptFile: [data.url("jquery-1.12.0.min.js"), data.url("jszip.min.js"), data.url("FileSaver.min.js"), "./dewey-content-script.js"],
+	contentScriptFile: [data.url("jquery-1.12.0.min.js"), data.url("jszip.min.js"), data.url("jszip-utils.min.js"), "./dewey-content-script.js"],
 	// contentStyleFile: "./dewey-style.css",
 });
 
