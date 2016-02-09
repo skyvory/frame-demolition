@@ -168,6 +168,9 @@ function onDownloadComplete(blobData) {
 				// hide downlod loading bar
 				$('.fd-download-loading-bar').fadeOut();
 
+				// return count to 0
+				count = 0;
+
 				// simulate download action towards generated zip of which instance temporarily attached to document
 				var link = document.createElement('a');
 				link.download = zipName;
