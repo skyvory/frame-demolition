@@ -13,20 +13,21 @@ var button = buttons.ActionButton({
 });
 
 function handleClick(state) {
-	tabs.open("http://dewey.petra.ac.id");
+	tabs.open("http://dewey.petra.ac.id/catalog/ft_detail.php?knokat=19762");
 	// console.log(tabs.activeTab.url);
 
 }
 
-tabs.on('activate', function(tab) {
-	console.log('active: ' + tabs.activeTab.url);
-	var worker = tab.attach({
-		contentScript: 'self.port.emit("html", document.body.innerHTML);'
-	});
-	worker.port.on("html", function(message) {
-		console.log(message);
-	});
-});
+// show content of tab in console
+// tabs.on('activate', function(tab) {
+// 	console.log('active: ' + tabs.activeTab.url);
+// 	var worker = tab.attach({
+// 		contentScript: 'self.port.emit("html", document.body.innerHTML);'
+// 	});
+// 	worker.port.on("html", function(message) {
+// 		console.log(message);
+// 	});
+// });
 
 var pageMod = require("sdk/page-mod");
 
@@ -36,8 +37,8 @@ var data = require('sdk/self').data;
 
 pageMod.PageMod({
 	include: "http://dewey.petra.ac.id/catalog/*",
-	contentScriptFile: [data.url("jquery-1.12.0.min.js"), "./dewey-content-script.js"],
-	contentStyleFile: "./dewey-style.css",
+	contentScriptFile: [data.url("jquery-1.12.0.min.js"), data.url("jszip.min.js"), data.url("FileSaver.min.js"), "./dewey-content-script.js"],
+	// contentStyleFile: "./dewey-style.css",
 });
 
 // var { attach, detach } = require('sdk/content/mod');
