@@ -190,3 +190,7 @@ function calculateAndUpdateProgress(evt) {
 		console.log("evt");
 	}
 }
+
+// parse dewey description text
+var detailright_text = $(".detailright p").text();
+$(".detailright p").html(detailright_text);
