@@ -7,7 +7,7 @@
 
 var download_element = '\
 	<div class="frame-demolition">\
-		<button class="fd-download-button waves-effect waves-light btn pink lighten-3" id="fddownload"><i class="material-icons left"></i>Download All</button>\
+		<button class="fd-download-button waves-effect waves-light btn pink" id="fddownload"><i class="material-icons left"></i>Download All</button>\
 		<span class="fd-download-status">notice: your browser will stop responding for up to a minute when downloading</span>\
 		<div class="fd-download-loading-bar progress" style="display:none;">\
 			<div class="indeterminate"></div>\
@@ -18,7 +18,7 @@ var download_element = '\
 $(download_element).appendTo(".detailright");
 
 var jumpto_element = '\
-	<button class="fd-jump-to-download-button waves-effect waves-light btn teal lighten-3" id="fdjumptodownload">to download</button>\
+	<button class="fd-jump-to-download-button waves-effect waves-light btn teal" id="fdjumptodownload">to download</button>\
 ';
 $(jumpto_element).appendTo('.detailleft');
 
