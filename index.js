@@ -27,6 +27,9 @@ var data = require('sdk/self').data;
 
 pageMod.PageMod({
 	include: "http://dewey.petra.ac.id/catalog/ft_detail.php*",
-	contentScriptFile: [data.url("jquery-1.12.0.min.js"), data.url("jszip.min.js"), data.url("jszip-utils.min.js"), data.url("materialize/js/materialize.min.js"), "./dewey-content-script.js"],
+	// development content script
+	// contentScriptFile: [data.url("jquery-1.12.0.js"), data.url("jszip.js"), data.url("jszip-utils.js"), data.url("materialize/js/materialize.js"), "./dewey-content-script.js"],
+	// production content script
+	contentScriptFile: [data.url("jquery-1.12.0.min.js"), data.url("jszip.min.js"), data.url("jszip-utils.min.js"), data.url("materialize/js/materialize.min.js"), "./dewey-content-script.min.js"],
 	contentStyleFile: [data.url("materialize/css/materialize.min.css"), "./dewey-style.css"],
 });
