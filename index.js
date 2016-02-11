@@ -17,19 +17,7 @@ function handleClick(state) {
 	// tabs.open("http://dewey.petra.ac.id/catalog/ft_detail.php?knokat=14162");
 	tabs.open("http://dewey.petra.ac.id/catalog/ft.php");
 	// console.log(tabs.activeTab.url);
-
 }
-
-// show content of tab in console
-// tabs.on('activate', function(tab) {
-// 	console.log('active: ' + tabs.activeTab.url);
-// 	var worker = tab.attach({
-// 		contentScript: 'self.port.emit("html", document.body.innerHTML);'
-// 	});
-// 	worker.port.on("html", function(message) {
-// 		console.log(message);
-// 	});
-// });
 
 var pageMod = require("sdk/page-mod");
 
@@ -42,25 +30,3 @@ pageMod.PageMod({
 	contentScriptFile: [data.url("jquery-1.12.0.min.js"), data.url("jszip.min.js"), data.url("jszip-utils.min.js"), data.url("materialize/js/materialize.min.js"), "./dewey-content-script.js"],
 	contentStyleFile: [data.url("materialize/css/materialize.min.css"), "./dewey-style.css"],
 });
-
-// var { attach, detach } = require('sdk/content/mod');
-// var { style } = require('sdk/stylesheet/style');
-// var { ToggleButton } = require('sdk/ui/button/toggle');
-
-// var style = Style({
-// 	uri: './style.css'
-// });
-
-// var button = ToggleButton({
-// 	id: "styleist",
-// 	label: "stylist",
-// 	icon: "./icon-16.png",
-// 	onChange: function(state) {
-// 		if(state.checked) {
-// 			attach(style, tabs.activeTab);
-// 		}
-// 		else {
-// 			detach(style, tabs.activeTab);
-// 		}
-// 	}
-// });

@@ -1,10 +1,3 @@
-// document.body.innerHTML = '<button class="thisbutton">Page matches ruleset</button>';
-// $("body").html("X");
-
-// $(".thisbutton").on("click", function() {
-// 	console.log("XXX");
-// });
-
 var download_element = '\
 	<div class="frame-demolition">\
 		<button class="fd-download-button waves-effect waves-light btn pink" id="fddownload"><i class="material-icons left"></i>Download All</button>\
@@ -14,7 +7,6 @@ var download_element = '\
 		</div>\
 	</div>\
 ';
-		// <button class="fd-download-button" id="fddownload">Download all</button>\
 $(download_element).appendTo(".detailright");
 
 var jumpto_element = '\
@@ -31,10 +23,6 @@ document.getElementById("fdjumptodownload").addEventListener("click", function()
 	}, 300);
 });
 
-
-// $(".frame-demolition").on('click', '.fd-download', function() {
-// 	console.log("processing");
-// });
 var target_element = document.getElementById("fddownload");
 target_element.addEventListener("click", function() {
 	console.log("OK");
@@ -160,7 +148,6 @@ function downloadFile(url, onSuccess) {
 			console.log("ERROR", error);
 		}
 		else {
-			// console.log("DATA", data);
 			onSuccess(data);
 		}
 	});
@@ -189,10 +176,7 @@ function onDownloadComplete(blobData) {
 				$('.fd-download-status').text("processing PDFs... please wait until browser is responding again (up to a minute)");
 				// genereate the zip of appended files and put in inside a variable
 				var content = zip.generate();
-
 				var zipName = "download.zip";
-				// console.log("content after generate", content);
-				// location.href = "data:application/zip;base64," + content;
 
 				// change downloading status
 				$('.fd-download-status').text("sweet!");
