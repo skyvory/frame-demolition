@@ -38,8 +38,10 @@ document.getElementById("fdjumptodownload").addEventListener("click", function()
 var target_element = document.getElementById("fddownload");
 target_element.addEventListener("click", function() {
 	console.log("OK");
-	// show loading bar
+	// show download loading bar
 	$('.fd-download-loading-bar').fadeIn();
+	// disable download button
+	$('.fd-download-button').addClass("disabled");
 	// begin file downloading and processing
 	downloadFile(fileUrls[count], onDownloadComplete);
 });
@@ -196,6 +198,8 @@ function onDownloadComplete(blobData) {
 				$('.fd-download-status').text("sweet!");
 				// hide downlod loading bar
 				$('.fd-download-loading-bar').fadeOut();
+				// enable download button
+				$('.fd-download-button').removeClass("disabled");
 
 				// return count to 0
 				count = 0;
