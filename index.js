@@ -2,19 +2,20 @@ var buttons = require('sdk/ui/button/action');
 var tabs = require("sdk/tabs");
 
 var button = buttons.ActionButton({
-  id: "mozilla-link",
-  label: "Visit Mozilla",
-  icon: {
-    "16": "./icon-16.ico",
-    "32": "./icon-32.ico",
-    "64": "./icon-64.ico"
-  },
-  onClick: handleClick
+	id: "mozilla-link",
+	label: "Open dewey",
+	icon: {
+		"16": "./icon-16.ico",
+		"32": "./icon-32.ico",
+		"64": "./icon-64.ico"
+	},
+	onClick: handleClick
 });
 
 function handleClick(state) {
 	// tabs.open("http://dewey.petra.ac.id/catalog/ft_detail.php?knokat=19762");
-	tabs.open("http://dewey.petra.ac.id/catalog/ft_detail.php?knokat=14162");
+	// tabs.open("http://dewey.petra.ac.id/catalog/ft_detail.php?knokat=14162");
+	tabs.open("http://dewey.petra.ac.id/catalog/ft.php");
 	// console.log(tabs.activeTab.url);
 
 }
