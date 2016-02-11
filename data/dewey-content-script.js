@@ -2,7 +2,7 @@ var download_element = '\
 	<div class="frame-demolition">\
 		<button class="fd-download-button waves-effect waves-light btn pink" id="fddownload"><i class="material-icons left"></i>Download All</button>\
 		<span class="fd-download-status">notice: your browser will stop responding for up to a minute when downloading</span>\
-		<div class="fd-download-loading-bar progress" style="display:none;">\
+		<div class="fd-download-loading-bar progress light-green" style="display:none;">\
 			<div class="indeterminate"></div>\
 		</div>\
 	</div>\
