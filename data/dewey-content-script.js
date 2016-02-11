@@ -25,7 +25,6 @@ document.getElementById("fdjumptodownload").addEventListener("click", function()
 
 var target_element = document.getElementById("fddownload");
 target_element.addEventListener("click", function() {
-	console.log("OK");
 	// show download loading bar
 	$('.fd-download-loading-bar').fadeIn();
 	// disable download button
@@ -69,10 +68,8 @@ for(var i = 0; i < section_list.length; i++) {
 	individual_section = $('.detailright ol li a:eq(' + i + ')');
 	// get link value of href
 	section_link = individual_section[0].getAttribute("href");
-	// console.log(section_link);
 	// replace unnecessary string from the link
 	var extension = extension_regex.exec(section_link)[1];
-	console.log(extension);
 	if(extension == "pdf") {
 		section_link = section_link.replace("ft_viewer.php?fname=", "");
 		// concat path to direct pdf file
@@ -99,7 +96,6 @@ var count = 0;
 // downloadFile(fileUrls[count], onDownloadComplete);
 
 function downloadFile(url, onSuccess) {
-	console.log("downloading file");
 	// change status
 	var downloading_file_name = fileUrls[count].substring(fileUrls[count].lastIndexOf('/') + 1);
 	$('.fd-download-status').text("downloading " + downloading_file_name + " ...");
@@ -154,13 +150,10 @@ function downloadFile(url, onSuccess) {
 }
 
 function onDownloadComplete(blobData) {
-	console.log("download complete");
 	if(count < fileUrls.length) {
-		console.log("Count OK");
 		blobToBase64(blobData, function(binaryData) {
 			// determine name of the file to be added
 			var fileName = fileUrls[count].substring(fileUrls[count].lastIndexOf('/') + 1);
-			console.log("FILENAME", fileName);
 			// add file to zip (append)
 			zip.file(fileName, binaryData, {binary: true});
 			// zip.file(fileName, binaryData);
@@ -171,7 +164,6 @@ function onDownloadComplete(blobData) {
 			else {
 				// all files finished download
 				// ready to zip
-				console.log("ready to zip");
 				// change downloding status
 				$('.fd-download-status').text("processing PDFs... please wait until browser is responding again (up to a minute)");
 				// genereate the zip of appended files and put in inside a variable
@@ -192,10 +184,8 @@ function onDownloadComplete(blobData) {
 				var link = document.createElement('a');
 				link.download = zipName;
 				link.href = "data:application/zip;base64," + content;
-				console.log("A", link);
 				document.body.appendChild(link);
 				link.click();
-				console.log("save ok");
 				document.body.removeChild(link);
 				delete link;
 			}
@@ -207,7 +197,6 @@ function blobToBase64(blob, callback) {
 	// toggling false for pdf doesn't need conversion as of arrayBuffer
 	var toggle = false;
 	if(toggle) {
-		console.log("converting blob to base64");
 		var reader = new FileReader();
 		reader.onload = function() {
 			var dataUrl = reader.result;
@@ -217,7 +206,6 @@ function blobToBase64(blob, callback) {
 		reader.readAsDataURL(blob);
 	}
 	else {
-		console.log("skip base64 conversion");
 		callback(blob);
 	}
 }
