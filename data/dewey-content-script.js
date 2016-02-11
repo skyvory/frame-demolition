@@ -168,7 +168,10 @@ function onDownloadComplete(blobData) {
 				$('.fd-download-status').text("processing PDFs... please wait until browser is responding again (up to a minute)");
 				// genereate the zip of appended files and put in inside a variable
 				var content = zip.generate();
-				var zipName = "download.zip";
+
+				var dewey_title = $('#content-wrap #content #main #resultwindow .detailright .title').text();
+				var parsed_dewey_title = dewey_title.replace(/\s/g, "-");
+				var zipName = parsed_dewey_title + ".zip";
 
 				// change downloading status
 				$('.fd-download-status').text("sweet!");
