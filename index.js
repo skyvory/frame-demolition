@@ -38,8 +38,8 @@ var data = require('sdk/self').data;
 
 pageMod.PageMod({
 	include: "http://dewey.petra.ac.id/catalog/ft_detail.php*",
-	contentScriptFile: [data.url("jquery-1.12.0.min.js"), data.url("jszip.min.js"), data.url("jszip-utils.min.js"), "./dewey-content-script.js"],
-	contentStyleFile: [data.url("materialize/css/materialize.css"), "./dewey-style.css"],
+	contentScriptFile: [data.url("jquery-1.12.0.min.js"), data.url("jszip.min.js"), data.url("jszip-utils.min.js"), data.url("materialize/js/materialize.min.js"), "./dewey-content-script.js"],
+	contentStyleFile: [data.url("materialize/css/materialize.min.css"), "./dewey-style.css"],
 });
 
 // var { attach, detach } = require('sdk/content/mod');
