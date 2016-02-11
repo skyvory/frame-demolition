@@ -22,3 +22,8 @@ td {
 .fd-download-status {
 	font-style: italic;
 }
+
+.fd-jump-to-download-button {
+	font-size: 0.79em;
+	min-width: 140px;
+}
