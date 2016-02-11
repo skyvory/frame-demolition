@@ -1,0 +1,11 @@
+.git/*
+.gitignore
+.jpmignore
+*.xpi
+test/*
+data/materialize/font/*
+data/materialize/js/*
+data/jquery-1.12.0.min.js
+data/jszip.min.js
+data/jszip-utils.min.js
+dewey-content-script.min.js
