@@ -1,0 +1,29 @@
+.fd-download-button {
+	margin: 20px;
+}
+
+td {
+	margin: 0px !important;
+	padding: 0px !important;
+}
+
+#content {
+	width: auto;
+}
+
+#resultwindow {
+	margin: 0px;
+}
+
+#resultwindow {
+	background-color: rgba(255,255,255,0.9);
+}
+
+.fd-download-status {
+	font-style: italic;
+}
+
+.fd-jump-to-download-button {
+	font-size: 0.79em;
+	min-width: 140px;
+}

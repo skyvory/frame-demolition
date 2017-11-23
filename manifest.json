@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+  "name": "Frame Demolition",
+  "version": "2.0",
+  "description": "Enabling route to load abstracted file layer in select sites.",
+  "icons": {
+    "48": "icons/icon-48.png",
+    "48": "icons/icon-96.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.dewey.petra.ac.id/*"
+      ],
+      "js": [
+        "jquery-1.12.0.js",
+        "jszip.js",
+        "jszip-utils.js",
+        "./dewey-content-script.js"
+      ],
+      "css": [
+        "materialize/css/materialize.min.css",
+        "./dewey-style.css"
+      ]
+    }
+  ]
+}
