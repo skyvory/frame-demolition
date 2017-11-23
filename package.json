@@ -1,0 +1,25 @@
+{
+  "name": "frame-demolition",
+  "version": "2.0.0",
+  "description": "Enabling route to load abstracted file layer in select sites.  \r Layman's term: add-on to provide download ability for sites that have no download button.",
+  "main": "manifest.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skyvory/frame-demolition.git"
+  },
+  "author": "Rika Voice",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/skyvory/frame-demolition/issues"
+  },
+  "homepage": "https://github.com/skyvory/frame-demolition#readme",
+  "dependencies": {
+    "jquery": "^1.12.0",
+    "jszip": "^3.1.5",
+    "jszip-utils": "0.0.2",
+    "materialize-css": "^0.100.2"
+  }
+}
