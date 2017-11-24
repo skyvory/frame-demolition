@@ -2,7 +2,6 @@
 function listenForClicks() {
   document.addEventListener("click", (e) => {
 
-    
     function selectedSite(clickedButton) {
       return "dewey";
       switch (clickedButton) {
@@ -22,20 +21,11 @@ function listenForClicks() {
         }
 
         window.close();
-        
-        // browser.tabs.sendMessage(tabs[0].id, {
-        //   command: "dewey"
-        // });
     }
 
     function cancel(tabs) {
       window.close();
-      
-        // browser.tabs.sendMessage(tabs[0].id, {
-        //   command: "reset",
-        // });
     }
-
 
 
     if (e.target.classList.contains("site")) {
@@ -49,7 +39,4 @@ function listenForClicks() {
   });
 }
 
-
-// browser.tabs.executeScript({ file: "execute_shortcut.js" })
-//   .then(listenForClicks);
 listenForClicks();
