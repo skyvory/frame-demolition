@@ -5,7 +5,7 @@ function listenForClicks() {
     function selectedSite(clickedButton) {
       return "dewey";
       switch (clickedButton) {
-        case "Dewey":
+        case "dewey.petra.ac.id":
           return "dewey";
       }
     }
