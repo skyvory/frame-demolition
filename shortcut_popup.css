@@ -7,25 +7,30 @@ html, body {
 }
 
 .button {
-  margin: 3% auto;
-  padding: 4px;
+  margin: 1% 0;
+  padding: 0px;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 1.3em;
   cursor: pointer;
+  color: #000a64;
 }
 
 .site:hover {
-  background-color: #CFF2F2;
+  background-color: rgb(182, 182, 182);
 }
 
 .site {
-  background-color: #E5F2F2;
+  background-color: rgb(235, 235, 235);
 }
 
 .cancel {
-  background-color: #FBFBC9;
+  background-color: rgb(255, 231, 231);
 }
 
 .cancel:hover {
-  background-color: #EAEA9D;
+  background-color: rgb(182, 182, 182);
+}
+
+.desc {
+  font-size: 0.8em;
 }
